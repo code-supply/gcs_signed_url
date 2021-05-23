@@ -72,8 +72,10 @@ defmodule GcsSignedUrl.Crypto do
   defp format_error(%{reason: reason}),
     do: {:error, "Error during HTTP request: #{reason}"}
 
-  defp format_error(_error),
-    do: {:error, "An unexpected error occurred during the API call to the signBlob API."}
+  defp format_error(error),
+    do:
+      {:error,
+       "An unexpected error occurred during the API call to the signBlob API: #{inspect(error)}"}
 
   # coveralls-ignore-stop
 
